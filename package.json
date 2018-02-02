@@ -1,0 +1,43 @@
+{
+  "name": "learning-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm-run-all test:*",
+    "test:html": "globstar nu-html-checker *.html",
+    "test:js": "globstar jshint 2-JS/*.js",
+    "init-project": "npm install && npm-run-all init:*",
+    "init:dirs": "mkdirp 0-CSS 1-SASS/0-plugins 1-SASS/1-base 1-SASS/2-layouts 1-SASS/3-modules images/icons 2-JS",
+    "init:files": "touch README.md index.html 2-JS/script.js 1-SASS/0-plugins/_plugins-dir.sass 1-SASS/1-base/_base-dir.sass 1-SASS/1-base/_base.sass 1-SASS/2-layouts/_layouts-dir.sass 1-SASS/2-layouts/_layouts.sass 1-SASS/3-modules/_modules-dir.sass 1-SASS/_mixins.sass 1-SASS/_variables.sass 1-SASS/app.sass",
+    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "init:normalize": "curl https://necolas.github.io/normalize.css/7.0.0/normalize.css -o 0-CSS/normalize.css",
+    "build": "npm-run-all build:* test",
+    "build:clean": "globstar rimraf 0-CSS/*.css",
+    "build:sass": "node-sass --output-style compact -o 0-CSS 1-SASS",
+    "build:autoprefixer": "autoprefixer-cli 0-CSS/app.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o 0-CSS 1-SASS",
+    "watch": "npm-run-all -p watch:*",
+    "watch:sass": "node-sass --output-style expanded --source-map true -o 0-CSS 1-SASS --watch",
+    "watch:browser-sync": "browser-sync start --server --files 0-CSS/*.css *.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.23.6",
+    "globstar": "^1.0.0",
+    "jshint": "^2.9.5",
+    "mkdirp": "^0.5.1",
+    "node-bourbon": "^4.2.8",
+    "node-sass": "^4.7.2",
+    "normalize.css": "^7.0.0",
+    "npm-run-all": "^4.1.2",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^3.3.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {},
+  "optionalDependencies": {}
+}
