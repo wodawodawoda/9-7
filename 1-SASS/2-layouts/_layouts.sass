@@ -1,12 +1,46 @@
 .btn
 	margin-bottom: 10px
 
+.start-game-button
+	margin: 20px auto
+
+.end-game-button, .start-game-button
+	+media(medium)
+		font-size: 1.7rem
+	+media(large)
+		font-size: 3rem
+label
+	+media(medium)
+		font-size: 1.5rem
+	+media(large)
+		font-size: 2.6rem
+
+
 div.justify-content-center
 	text-align: center
 
-.welcome-page
-	height: 100vh
-	// width: 100vw
-	position: absolute
-	background: #123458
-	z-index: 1
+.name-input
+	margin: 10px auto
+	+media(medium)
+		font-size: 1.4rem
+	+media(large)
+		font-size: 2.4rem
+
+.gameButton
+	+media(medium)
+		font-size: 1.5rem
+		flex: 0 0 30%
+	+media(large)
+		font-size: 3rem
+	svg
+		margin-right: 10px
+
+.gameBoard p, .end-game-section p
+	margin-top: 10px
+	+media(medium)
+		font-size: 5.7rem
+	+media(large)
+		font-size: 3rem
+
+
+

@@ -1,0 +1,10 @@
+$medium: '(min-width: 768px)'
+$large: '(min-width: 1200px)'
+
+=media($point)
+	@if $point == medium
+		@media (min-width: 767px)
+	  	@content
+	@else if $point == large
+		@media (min-width: 1200px)
+	  	@content

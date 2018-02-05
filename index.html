@@ -2,57 +2,53 @@
 <html lang='en'>
 <head>
 	<title>9-7</title>
-	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="0-CSS/app.css">
 </head>
 <body>
-	<div id="startPage" class="welcome-page container-fluid">
-		<div class="title row">
-			<h1 class="col">Rock, Paper, Scissors</h1>
-		</div>
-		<div class="row">
-			<form>
+	<section id="startPage" class="welcome-page container-fluid">
+		<div class="row flex-column align-items-center">
+			<h1 class="game-title">Rock, Paper, Scissors</h1>
+			<form class="col-12 col-md-8 col-lg-4">
 				<label for="#player1NameInput" class="col-12">Player 1 name:</label>
-				<input id="player1NameInput" class="col-12" type="text">
+				<input id="player1NameInput" class="col-12 name-input" type="text">
 				<label for="#player2NameInput" class="col-12">Player 2 name:</label>
-				<input id="player2NameInput" class="col-12" type="text">
-				<button type="button" id="startGame" class="btn btn-primary">Start game</button>
+				<input id="player2NameInput" class="col-12 name-input" type="text">
+				<button type="button" id="startGame" class="btn btn-success col-12 start-game-button">Start game</button>
 			</form> 
-
 		</div>
-		
-	</div>
-	<header class="row justify-content-center">
+	</section>
+	<header class="justify-content-center">
 		<div class="col">
-			<h1>Welcome to the game</h1>
+			<h1>Choose:</h1>
 		</div>
 	</header>
-	<div class="container">
+	<section class="container">
 		<div class="row justify-content-around">
-			<button type="button" class="btn btn-primary col-3 gameButton" data-button='1'>Kamień</button>
-			<button type="button" class="btn btn-primary col-3 gameButton" data-button='0'>Papier</button>
-			<button type="button" class="btn btn-primary col-3 gameButton" data-button='-1'>Nożyce</button>
+			<button type="button" class="btn btn-primary col-5 gameButton" data-button='1'><span class="far fa-hand-rock"></span>ROCK</button>
+			<button type="button" class="btn btn-primary col-5 gameButton" data-button='0'><span class="far fa-hand-paper"></span>PAPER</button>
+			<button type="button" class="btn btn-primary col-5 gameButton" data-button='-1'><span class="far fa-hand-scissors"></span>SCISSORS</button>
 		</div>
-		<div class="row">
-			<div id="playerSection" class="col-sm">
-				<h2 id="player1Name"></h2>
-				<p id="player1Score">Player score: 0</p>
+		<div class="row gameBoard">
+			<div id="playerSection" class="col-5 col-md">
+				<h3 id="player1Name">&nbsp;</h3>
+				<p id="player1Score">&nbsp;</p>
 			</div>
-			<div class="col-sm"><p>VS.</p></div>
-			<div id="computerSection" class="col-sm">
-				<h2 id="player2Name"></h2>
-				<p id="player2Score">Player score: 0</p>
+			<div class="col-2 col-md"><p>VS.</p></div>
+			<div id="computerSection" class="col-5 col-md">
+				<h3 id="player2Name">&nbsp;</h3>
+				<p id="player2Score">&nbsp;</p>
 			</div>
 		</div>
-		<div class="row justify-content-center">
-			<div id="result" class="col-12"><p>RESULT:</p></div>
-			<button id="restart" type="button" class="btn btn-success invisible">Play again</button>
+		<div class="row justify-content-around end-game-section">
+			<div class="col-12"><p>RESULT:</p><p id="result"></p></div>
+			<button id="restart" type="button" class="btn btn-success invisible col-10 col-md-5 end-game-button">Play again</button>
+			<button id="changeOpponents" type="button" class="btn btn-warning invisible col-10 col-md-5 end-game-button" data-rel="back">Change opponents</button>
 		</div>
-
-	</div>
-	
+	</section>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>	
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

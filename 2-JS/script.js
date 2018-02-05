@@ -1,106 +1,140 @@
-// DOM Objects
-var resultContainer = document.getElementById('result');
-
-// Possible options
-const k = 1;
-const p = 0;
-const n = -1;
+// Rock, Paper, Scissors
+const k = 1,
+	p = 0,
+	n = -1;
 
 // Random computer choice function
 function random() {
 	return Math.floor(Math.random() * 3 - 1);
 }
 
-// State keepers
+// Points
 var points = {
 	computer: 0,
-	player: 0	
+	player: 0
 };
 
-var player1Name = '',
-	player2Name = '';
+// Names
+var names = {
+  player1: "",
+  player2: ""
+};
 
+// Import player names
+function getNames() {
+	names.player1 = document.getElementById("player1NameInput").value;
+	names.player2 = document.getElementById("player2NameInput").value;
+}
 // Start game
-var startPage = document.getElementById('startPage');
-var startGame = document.getElementById('startGame');
-startGame.onclick = function() {
-	startPage.classList.add('invisible');
+var startPageElem = document.getElementById('startPage'),
+	startGameBtn = document.getElementById('startGame');
+startGameBtn.onclick = function() {
+	startPageElem.classList.add('invisible');
+	getNames();
+	pushNames();
+
+};
+//.........................................................
+
+// Game restart
+var restartButtonElem = document.getElementById('restart'),
+	changeOpponentsButtonElem = document.getElementById('changeOpponents');
+
+// 
+function restart() {
+	// clear result
+	resultElem.innerHTML = '';
+	points.computer = points.player = 0;
+	// display 0 score:
+	addPoints();
+	unlockButtons();
+	restartButtonElem.classList.add('invisible');
+	changeOpponentsButtonElem.classList.add('invisible');
+}
+// Back to initial screen to input new names
+changeOpponentsButtonElem.onclick = function() {
+	restart();
+	startPageElem.classList.remove('invisible');
 };
 
+// Start new game with same names
+restartButtonElem.onclick = function() {
+	restart();
+};
+//.........................................................
 
-// Player section
-// var playerNameElem = document.createElement('h2');
-// var playerScoreElem = document.createElement('p');
-var player1NameElem = document.getElementById('player1Name');
-var player1ScoreElem = document.getElementById('player1Score');
-player1NameElem.innerHTML = player1Name;
-// playerSection.appendChild(playerNameElem);
+// Player1 and 2 elements
+var player1NameElem = document.getElementById('player1Name'),
+	player2NameElem = document.getElementById('player2Name');
 
-// Computer section
-// var computerNameElem = document.createElement('h2');
-// var computerScoreElem = document.createElement('p');
-var player2NameElem = document.getElementById('player2Name');
-var player2ScoreElem = document.getElementById('player2Score');
-player2NameElem.innerHTML = player2Name;
-// computerSection.appendChild(computerNameElem);
+// Display names
+function pushNames() {
+	player1NameElem.innerHTML = names.player1;
+	player2NameElem.innerHTML = names.player2;
+}
+//.........................................................
 
-// Button click in jQuery and Vanilla JS
+// Game end
 var gameButton = document.getElementsByClassName('gameButton');
-// jQuery solution
 
-// $('.gameButton').click( function() {
-// 	var a = Number(this.getAttribute('data-button'));
-// 	play(a);
-// });
-
-// Vanilla JS solution
 for (var i = 0; i < gameButton.length; i++) {
     var btnNum = gameButton[i];
 	btnNum.onclick = function() {
 		var a = Number(btnNum.getAttribute('data-button'));
-		if (blockButtons() !== 1) {
+		if (blockGame() !== 1) {
+			// starts single game
 			play(a);
-		}
-	};
-}
+}};}
 
-// Game end
-function blockButtons() {
+// check if any of player is having 10 points
+function blockGame() {
 	for (const k in points) {
 		if (points[k] === 10) {
+			lockButtons();
 			return 1;
-		}
-	}
-}
-function restart() { 
-	if (blockButtons() === 1) {
-	restartButtonElem.classList.remove('invisible');
-	}
-}
+}}}
 
-function endGame() {
+function lockButtons() {
+	for (var b = 0; b < gameButton.length; b++) {
+		gameButton[b].classList.add('disabled');
+}}
+
+function unlockButtons() {
+	for (var b = 0; b < gameButton.length; b++) {
+		gameButton[b].classList.remove('disabled');
+}}
+
+function showRestartBtn() { 
+	if (blockGame() === 1) {
+		restartButtonElem.classList.remove('invisible');
+		changeOpponentsButtonElem.classList.remove('invisible');
+}}
+//.........................................................
+
+// Final result
+function finalResult() {
 	if (points.computer === 10 ) {
-		result = 'The winner is Computer';
+		result = 'The winner is ' + names.player2;
 	} else  if (points.player === 10){
-		result = 'The winner is Player';
+		result = 'The winner is ' + names.player1;
 	}
 }
+// Single game result
+var resultElem = document.getElementById('result'),
+	result = '';
+//.........................................................
 
-// Game restart
-var restartButtonElem = document.getElementById('restart');
-restartButtonElem.onclick = function() {
-	points.computer = points.player = 0;
-	addPoints();
-	restartButtonElem.classList.add('invisible');
-};
-// Game result
-var result = '';
-var resultElem = document.createElement('p');
+// Add points
+var	player1ScoreElem = document.getElementById('player1Score'),
+	player2ScoreElem = document.getElementById('player2Score');
+	
+function addPoints() {
+	player1ScoreElem.innerHTML = 'score: ' + points.player;
+	player2ScoreElem.innerHTML = 'score: ' + points.computer;
+}
+//.........................................................
 
-
-
-
-// Game logic
+// GAME
 function play(choose) {
 	var computer = random();
 	if (choose === computer) {
@@ -110,26 +144,15 @@ function play(choose) {
 		(choose === 0 && computer === 1) || 
 		(choose === -1 && computer === 0)) 
 	{
-		result = 'player win';
+		result = names.player2 + ' win';
 		points.player += 1;
 	} else {
-		result = 'computer win';
+		result = names.player1 + ' win';
 		points.computer += 1;
 	}
-	restart();
-	endGame();
-	console.log(points.player);
-	console.log(points.computer);
-	// Display result of single game
-	
-	// playerSection.appendChild(playerScoreElem);
-	// computerSection.appendChild(computerScoreElem);
+	// First finalresult - changing result to final first
+	finalResult();
 	resultElem.innerHTML = result;
-	resultContainer.appendChild(resultElem);
 	addPoints();
-}
-
-function addPoints() {
-	player1ScoreElem.innerHTML = 'Player score: ' + points.player;
-	player2ScoreElem.innerHTML = 'Computer score: ' + points.computer;
+	showRestartBtn();
 }

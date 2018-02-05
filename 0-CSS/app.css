@@ -1,33 +1,108 @@
-h1, h2, p {
+h1, h2, h3, p {
   text-align: center;
 }
 
-header {
-  margin-bottom: 20px;
+h1 {
+  font-size: 4rem;
+  margin: 20px 0 40px;
 }
 
-.game-content > .row {
-  margin-bottom: 20px;
+p {
+  font-size: 1.4rem;
 }
 
-.row {
-  margin-left: 0;
-  margin-right: 0;
+.welcome-page {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  background: #123458;
+  color: #fff;
+  z-index: 1;
 }
 
 .btn {
   margin-bottom: 10px;
 }
 
+.start-game-button {
+  margin: 20px auto;
+}
+
+@media (min-width: 767px) {
+  .end-game-button, .start-game-button {
+    font-size: 1.7rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .end-game-button, .start-game-button {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 767px) {
+  label {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  label {
+    font-size: 2.6rem;
+  }
+}
+
 div.justify-content-center {
   text-align: center;
 }
 
-.welcome-page {
-  height: 100vh;
-  position: absolute;
-  background: #123458;
-  z-index: 1;
+.name-input {
+  margin: 10px auto;
+}
+
+@media (min-width: 767px) {
+  .name-input {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .name-input {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 767px) {
+  .gameButton {
+    font-size: 1.5rem;
+    flex: 0 0 30%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gameButton {
+    font-size: 3rem;
+  }
+}
+
+.gameButton svg {
+  margin-right: 10px;
+}
+
+.gameBoard p, .end-game-section p {
+  margin-top: 10px;
+}
+
+@media (min-width: 767px) {
+  .gameBoard p, .end-game-section p {
+    font-size: 5.7rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gameBoard p, .end-game-section p {
+    font-size: 3rem;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
