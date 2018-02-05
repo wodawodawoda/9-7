@@ -1,0 +1,33 @@
+h1, h2, p {
+  text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.game-content > .row {
+  margin-bottom: 20px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+div.justify-content-center {
+  text-align: center;
+}
+
+.welcome-page {
+  height: 100vh;
+  position: absolute;
+  background: #123458;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=app.css.map */

@@ -8,10 +8,50 @@
 	<link rel="stylesheet" href="0-CSS/app.css">
 </head>
 <body>
-	<button type="button" class="btn btn-primary" data-button='1'>Kamień</button>
-	<button type="button" class="btn btn-primary" data-button='0'>Papier</button>
-	<button type="button" class="btn btn-primary" data-button='-1'>Nożyce</button>
-	<div id='result'></div>
+	<div id="startPage" class="welcome-page container-fluid">
+		<div class="title row">
+			<h1 class="col">Rock, Paper, Scissors</h1>
+		</div>
+		<div class="row">
+			<form>
+				<label for="#player1NameInput" class="col-12">Player 1 name:</label>
+				<input id="player1NameInput" class="col-12" type="text">
+				<label for="#player2NameInput" class="col-12">Player 2 name:</label>
+				<input id="player2NameInput" class="col-12" type="text">
+				<button type="button" id="startGame" class="btn btn-primary">Start game</button>
+			</form> 
+
+		</div>
+		
+	</div>
+	<header class="row justify-content-center">
+		<div class="col">
+			<h1>Welcome to the game</h1>
+		</div>
+	</header>
+	<div class="container">
+		<div class="row justify-content-around">
+			<button type="button" class="btn btn-primary col-3 gameButton" data-button='1'>Kamień</button>
+			<button type="button" class="btn btn-primary col-3 gameButton" data-button='0'>Papier</button>
+			<button type="button" class="btn btn-primary col-3 gameButton" data-button='-1'>Nożyce</button>
+		</div>
+		<div class="row">
+			<div id="playerSection" class="col-sm">
+				<h2 id="player1Name"></h2>
+				<p id="player1Score">Player score: 0</p>
+			</div>
+			<div class="col-sm"><p>VS.</p></div>
+			<div id="computerSection" class="col-sm">
+				<h2 id="player2Name"></h2>
+				<p id="player2Score">Player score: 0</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div id="result" class="col-12"><p>RESULT:</p></div>
+			<button id="restart" type="button" class="btn btn-success invisible">Play again</button>
+		</div>
+
+	</div>
 	
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
