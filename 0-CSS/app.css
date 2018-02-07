@@ -24,6 +24,10 @@ p {
   margin-bottom: 10px;
 }
 
+.input-name-form {
+  display: none;
+}
+
 .start-game-button {
   margin: 20px auto;
 }

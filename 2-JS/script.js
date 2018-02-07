@@ -16,14 +16,46 @@ var points = {
 
 // Names
 var names = {
-  player1: "",
-  player2: ""
+	player1: "",
+	player2: ""
+};
+//.........................................................
+
+//Single or multiplayer
+
+var singleBtnElem = document.getElementById('singlePlayer'),
+	multiBtnElem = document.getElementById('multiPlayer'),
+	inputNameFormElem = document.getElementById('inputNameForm'),
+	labelPlayer2Elem = document.getElementById('labelPlayer2');
+
+singleBtnElem.onclick = function() {
+	console.log('click');
+	multiBtnElem.classList.add('btn-secondary');
+	singleBtnElem.classList.remove('btn-secondary');
+	player2NameInputElem.style.display = "none";
+	labelPlayer2Elem.style.display = "none";
+	inputNameFormElem.style.display = "block";
 };
 
+multiBtnElem.onclick = function() {
+	console.log('click');
+	singleBtnElem.classList.add('btn-secondary');
+	multiBtnElem.classList.remove('btn-secondary');
+	player2NameInputElem.style.display = "block";
+	labelPlayer2Elem.style.display = "block";
+	inputNameFormElem.style.display = "block";
+};
+
+
+//.........................................................
+
 // Import player names
+var player1NameInputElem = document.getElementById("player1NameInput"),
+	player2NameInputElem = document.getElementById("player2NameInput");
+
 function getNames() {
-	names.player1 = document.getElementById("player1NameInput").value;
-	names.player2 = document.getElementById("player2NameInput").value;
+	names.player1 = player1NameInputElem.value;
+	names.player2 = player2NameInputElem.value;
 }
 // Start game
 var startPageElem = document.getElementById('startPage'),
@@ -78,13 +110,15 @@ function pushNames() {
 var gameButton = document.getElementsByClassName('gameButton');
 
 for (var i = 0; i < gameButton.length; i++) {
-    var btnNum = gameButton[i];
+	var btnNum = gameButton[i];
 	btnNum.onclick = function() {
 		var a = Number(btnNum.getAttribute('data-button'));
 		if (blockGame() !== 1) {
 			// starts single game
 			play(a);
-}};}
+		}
+	};
+}
 
 // check if any of player is having 10 points
 function blockGame() {
@@ -92,30 +126,35 @@ function blockGame() {
 		if (points[k] === 10) {
 			lockButtons();
 			return 1;
-}}}
+		}
+	}
+}
 
 function lockButtons() {
 	for (var b = 0; b < gameButton.length; b++) {
 		gameButton[b].classList.add('disabled');
-}}
+	}
+}
 
 function unlockButtons() {
 	for (var b = 0; b < gameButton.length; b++) {
 		gameButton[b].classList.remove('disabled');
-}}
+	}
+}
 
-function showRestartBtn() { 
+function showRestartBtn() {
 	if (blockGame() === 1) {
 		restartButtonElem.classList.remove('invisible');
 		changeOpponentsButtonElem.classList.remove('invisible');
-}}
+	}
+}
 //.........................................................
 
 // Final result
 function finalResult() {
-	if (points.computer === 10 ) {
+	if (points.computer === 10) {
 		result = 'The winner is ' + names.player2;
-	} else  if (points.player === 10){
+	} else if (points.player === 10) {
 		result = 'The winner is ' + names.player1;
 	}
 }
@@ -125,9 +164,9 @@ var resultElem = document.getElementById('result'),
 //.........................................................
 
 // Add points
-var	player1ScoreElem = document.getElementById('player1Score'),
+var player1ScoreElem = document.getElementById('player1Score'),
 	player2ScoreElem = document.getElementById('player2Score');
-	
+
 function addPoints() {
 	player1ScoreElem.innerHTML = 'score: ' + points.player;
 	player2ScoreElem.innerHTML = 'score: ' + points.computer;
@@ -140,10 +179,9 @@ function play(choose) {
 	if (choose === computer) {
 		result = 'tie';
 	} else if (
-		(choose === 1 && computer === -1) || 
-		(choose === 0 && computer === 1) || 
-		(choose === -1 && computer === 0)) 
-	{
+		(choose === 1 && computer === -1) ||
+		(choose === 0 && computer === 1) ||
+		(choose === -1 && computer === 0)) {
 		result = names.player2 + ' win';
 		points.player += 1;
 	} else {

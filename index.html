@@ -11,10 +11,14 @@
 	<section id="startPage" class="welcome-page container-fluid">
 		<div class="row flex-column align-items-center">
 			<h1 class="game-title">Rock, Paper, Scissors</h1>
-			<form class="col-12 col-md-8 col-lg-4">
+			<div class="col-12 col-md-8 col-lg-4">
+				<button id="singlePlayer" class="col-12 btn btn-primary">Singleplayer</button>
+				<button id="multiPlayer" class="col-12 btn btn-primary">Multiplayer</button>
+			</div>	
+			<form id="inputNameForm" class="col-12 col-md-8 col-lg-4 input-name-form">
 				<label for="#player1NameInput" class="col-12">Player 1 name:</label>
 				<input id="player1NameInput" class="col-12 name-input" type="text">
-				<label for="#player2NameInput" class="col-12">Player 2 name:</label>
+				<label id="labelPlayer2" for="#player2NameInput" class="col-12">Player 2 name:</label>
 				<input id="player2NameInput" class="col-12 name-input" type="text">
 				<button type="button" id="startGame" class="btn btn-success col-12 start-game-button">Start game</button>
 			</form> 
